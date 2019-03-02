@@ -1,0 +1,3 @@
+﻿  CollectionWhirlwindApp.cpp
+e:\users\martin\source\repos\code design project\collectionwhirlwind\objectpool.h(17): warning C4715: 'ObjectPool<Collectable>::AllocateObject': not all control paths return a value
+  CollectionWhirlwind.vcxproj -> E:\Users\Martin\Downloads\AIE\aieBootstrap-master\aieBootstrap-master\Debug\CollectionWhirlwind.exe
