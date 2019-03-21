@@ -9,8 +9,5 @@ public:
 	~Collectable();
 
 	void update(float deltaTime);
-	void reset(int xPos, int velocity, int form);
-private:
-
-	int m_form;
+	void reset(int xPos, int velocity, int form, bool isAlive);
 };

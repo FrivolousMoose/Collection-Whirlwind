@@ -1,7 +1,7 @@
 #include "Entity.h"
 
 #pragma once
-class Player
+class Player : public Entity
 {
 public:
 	Player();
@@ -9,16 +9,17 @@ public:
 
 	unsigned char gethealth() { return m_health; }
 	int getScore() { return m_score; }
+	void switchForm(int form);
+	void takeDamage();
 
 
-	void update();
+	void update(float deltaTime);
 
 private:
-	unsigned char m_health;
+	int m_health;
 	int m_score;
 
-	int form;
-	int m_mercyTime;
+	float m_mercyTime;
 	
 };
 

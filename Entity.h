@@ -18,8 +18,12 @@ public:
 	void setAnimation(const char* animFilename, unsigned int frames, unsigned int columns, glm::vec2 size);
 	void update(float deltaTime);
 	void draw(aie::Renderer2D* renderer);
+	bool collision(Entity* entity);
+	bool hasAdvantage(Entity* entity);
+	void setDead() { m_isAlive = false; }
 
 	bool isAlive() { return m_isAlive; }
+	//bool getForm() { return m_form; }
 protected:
 	Animations * m_animation;
 
@@ -27,7 +31,7 @@ protected:
 	glm::vec2 m_position;
 	glm::vec2 m_size;
 	glm::vec2 m_velocity;
-	float mercyFrames;
+	int m_form;
 
 	float m_opacity;
 };

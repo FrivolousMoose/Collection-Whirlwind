@@ -41,12 +41,13 @@ Collectable::~Collectable()
 {
 }
 
-void Collectable::reset(int xPos, int velocity, int form)
+void Collectable::reset(int xPos, int velocity, int form, bool isAlive)
 {
 	m_form = form;
 	m_velocity = { 0, -velocity };
 	m_size = { 50, 50 };
 	m_position = { xPos, 720 + m_size.y / 2 };
+	m_isAlive = isAlive;
 
 	switch (m_form)
 	{

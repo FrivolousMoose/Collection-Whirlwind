@@ -10,6 +10,7 @@ template <typename T>
 class ObjectPool;
 
 class Collectable;
+class Player;
 
 class CollectionWhirlwindApp : public aie::Application
 {
@@ -27,10 +28,11 @@ public:
 
 private:
 	aie::Renderer2D* m_2dRenderer;
-	float time;
+	float spawnTime;
 
 	ObjectPool<Collectable>* pool;
 	std::vector<Collectable*> m_collectables;
+	Player* m_player;
 
 
 };

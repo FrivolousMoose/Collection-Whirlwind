@@ -10,16 +10,11 @@ public:
 	~ObjectPool() { delete[] m_data; }
 	T* AllocateObject()
 	{
-		if (m_activeCount < m_size)
-		{
 			return m_data + (m_activeCount++);
-		}
 	}
 	void DeallocateObject(T* index)
 	{
 		*index = m_data[--m_activeCount];
-		//T[m_activeCount - 1] = T[index]
-		//m_activeCount -= 1;
 	}
 	int ReturnItems()
 	{

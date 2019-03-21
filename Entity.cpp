@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "Animations.h"
 #include "Renderer2D.h"
+#include "Defines.h"
 
 
 
@@ -30,9 +31,6 @@ void::Entity::update(float deltaTime)
 	if (m_isAlive == true)
 	{
 		m_position += m_velocity * deltaTime;
-
-		//mercyFrames += deltaTime;
-		//m_opacity = (cos(mercyFrames * 10) + 2) / 2;
 	}
 }
 
@@ -40,4 +38,19 @@ void::Entity::draw(aie::Renderer2D* renderer)
 {
 	renderer->setRenderColour(1, 1, 1, m_opacity);
 	m_animation->draw(renderer, m_position.x, m_position.y);
+}
+
+bool Entity::collision(Entity* entity)
+{
+	return (m_position.x < entity->m_position.x + entity->m_size.x) &&		
+		(m_position.x + m_size.x > entity->m_position.x) &&
+		(m_position.y - m_size.y < entity->m_position.y) &&
+		(m_position.y > entity->m_position.y - entity->m_size.y);
+}
+
+bool Entity::hasAdvantage(Entity* entity)
+{
+	return (m_form == SCISSORS && entity->m_form == PAPER) ||
+		(m_form == PAPER && entity->m_form == ROCK) ||
+		(m_form == ROCK && entity->m_form == SCISSORS);
 }
