@@ -7,10 +7,15 @@ public:
 	Player();
 	~Player();
 
-	unsigned char gethealth() { return m_health; }
+	unsigned char getHealth() { return m_health; }
 	int getScore() { return m_score; }
-	void switchForm(int form);
+	int getForm() { return m_form; }
+
+	void addScore(int points) { m_score += points; }
+
+	void switchForm();
 	void takeDamage();
+	void reset();
 
 
 	void update(float deltaTime);

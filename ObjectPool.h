@@ -5,9 +5,11 @@ public:
 	{
 		m_activeCount = 0;
 		m_size = size;
-		m_data = new T[size];
+		m_data = new T[m_size];
 	}
-	~ObjectPool() { delete[] m_data; }
+	~ObjectPool() { 
+		m_data = nullptr;
+		delete[] m_data; }
 	T* AllocateObject()
 	{
 			return m_data + (m_activeCount++);

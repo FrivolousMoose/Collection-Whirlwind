@@ -1,6 +1,3 @@
-#ifndef _ANIMATION_H_
-#define _ANIMATION_H_
-
 #include <glm/vec2.hpp>
 
 namespace aie {
@@ -32,6 +29,4 @@ private:
 	aie::Texture* m_texture;
 	glm::vec2 m_size;
 };
-
-#endif // _ANIMATION_H_
 

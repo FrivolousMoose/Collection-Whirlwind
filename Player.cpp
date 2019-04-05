@@ -2,13 +2,14 @@
 #include "Input.h"
 #include <math.h> 
 #include "Animations.h"
+#include "Defines.h"
 
 Player::Player()
 {
 	m_form = 0;
 	m_health = 3;
 	m_velocity = { 0, 0 };
-	m_size = { 100, 100 };
+	m_size = { 50, 50 };
 	m_position = { 480 + m_size.x / 2, 180 + m_size.y / 2 };
 	setAnimation("./textures/scissors.png", 7, 4, m_size);
 }
@@ -91,9 +92,41 @@ void Player::update(float deltaTime)
 	m_animation->update(deltaTime);
 }
 
-void Player::switchForm(int form)
+void Player::switchForm()
 {
+	//Testing this out. Still a little weird for me.
+	m_form = 4;
+	m_mercyTime = 3;
 
+	switch (m_form)
+	{
+	case SCISSORS:
+		setAnimation("./textures/scissors.png", 7, 4, m_size);
+		break;
+	case PAPER:
+		setAnimation("./textures/paper.png", 3, 3, m_size);
+		break;
+	case ROCK:
+		setAnimation("./textures/rock.png", 19, 5, m_size);
+		break;
+	default:
+		assert(!"Invalid player form");
+		break;
+	}
+
+}
+
+void Player::reset()
+{
+	m_isAlive = true;
+	m_mercyTime = 0;
+	m_form = 0;
+	m_health = 3;
+	m_score = 0;
+	m_velocity = { 0, 0 };
+	m_size = { 80, 80 };
+	m_position = { 480 + m_size.x / 2, 180 + m_size.y / 2 };
+	setAnimation("./textures/scissors.png", 7, 4, m_size);
 }
 
 void Player::takeDamage()

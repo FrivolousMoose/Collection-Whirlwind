@@ -23,7 +23,7 @@
     <ProjectGuid>{118448B8-4F2D-49DE-828A-D7BE90FD3A3E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CollectionWhirlwind</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

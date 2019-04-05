@@ -38,6 +38,7 @@ void::Entity::draw(aie::Renderer2D* renderer)
 {
 	renderer->setRenderColour(1, 1, 1, m_opacity);
 	m_animation->draw(renderer, m_position.x, m_position.y);
+	renderer->setRenderColour(1, 1, 1, 1);
 }
 
 bool Entity::collision(Entity* entity)

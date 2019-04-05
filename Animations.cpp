@@ -2,6 +2,7 @@
 #include <Renderer2D.h>
 #include <Texture.h>
 #include <memory>
+#include <iostream>
 
 
 Animations::Animations()
@@ -27,6 +28,7 @@ Animations::~Animations()
 	if (m_texture != nullptr)
 	{
 		delete m_texture;
+		m_texture = nullptr;
 	}
 }
 
