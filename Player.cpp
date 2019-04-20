@@ -95,7 +95,7 @@ void Player::update(float deltaTime)
 void Player::switchForm()
 {
 	//Testing this out. Still a little weird for me.
-	m_form = 4;
+	m_form = m_form < 2 ? ++m_form : 0;
 	m_mercyTime = 3;
 
 	switch (m_form)
@@ -113,7 +113,6 @@ void Player::switchForm()
 		assert(!"Invalid player form");
 		break;
 	}
-
 }
 
 void Player::reset()

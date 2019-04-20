@@ -33,6 +33,10 @@ Collectable::Collectable(int xPos, int velocity, int form)
 	case ROCK:
 		setAnimation("./textures/rock.png", 19, 5, m_size);
 		break;
+	default:
+		//Error handling for the collectable's form value not being in the acceptable range.
+		assert(!"Collectable form value out of range");
+		break;
 	}
 }
 
