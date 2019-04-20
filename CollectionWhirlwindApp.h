@@ -45,6 +45,7 @@ private:
 	aie::Font* m_fontBold;
 
 	float m_spawnTime;
+	float m_spawnRate;
 	float m_formTime;
 	int m_state = MENU;
 

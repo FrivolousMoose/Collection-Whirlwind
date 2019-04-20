@@ -38,6 +38,7 @@ bool CollectionWhirlwindApp::startup()
 	m_player = new Player();
 
 	m_spawnTime = 0;
+	m_spawnRate = 2;
 	m_formTime = FORM_LENGTH;
 	return true;
 
@@ -52,6 +53,7 @@ void CollectionWhirlwindApp::reset()
 	m_player->reset();
 
 	m_spawnTime = 0;
+	m_spawnRate = 2;
 	m_formTime = FORM_LENGTH;
 
 	for (int i = 0; i < pool->ReturnItems(); )
@@ -71,7 +73,7 @@ void CollectionWhirlwindApp::updateGame(float deltaTime)
 	m_collectables.begin();
 
 	//Spawns an enemy every second, unless enemy count is maxed out.
-	if (m_spawnTime > 1)
+	if (m_spawnTime > m_spawnRate)
 	{
 		if (pool->ReturnItems() < pool->ReturnSize())
 		{
@@ -105,17 +107,17 @@ void CollectionWhirlwindApp::updateGame(float deltaTime)
 	{
 		if (m_player->collision(m_collectables[i]))
 		{
-			//Gives a lot of points if player has the advantage
+			//Gives a lot of points if player has the advantage, increasing with how long they've been playing
 			if (m_player->hasAdvantage(m_collectables[i]))
 			{
-				m_player->addScore(10);
+				m_player->addScore(ceil(10 / m_spawnRate));
 			}
 			//Hurts the player if the enemy has an advantage
 			else if (m_collectables[i]->hasAdvantage(m_player))
 			{
 				m_player->takeDamage();
 			}
-			//Gives the player a few points if they're the same
+			//Gives the player a point if they're the same
 			else
 			{
 				m_player->addScore(1);
@@ -131,6 +133,7 @@ void CollectionWhirlwindApp::updateGame(float deltaTime)
 	{
 		m_player->switchForm();
 		m_formTime = FORM_LENGTH;
+		m_spawnRate -= m_spawnRate > 0.6 ? 0.3 : 0;
 	}
 
 	//Changes the game state if the player is dead
